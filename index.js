@@ -1,31 +1,31 @@
-//const http = require('nome-da-biblioteca');
-const express = require('express');
-const nunjucks = require('nunjucks');
+// const http = require('nome-da-biblioteca');
+const express = require('express')
+const nunjucks = require('nunjucks')
 
-const app = express();
+const app = express()
 
 nunjucks.configure('views', {
-    autoescape: true,
-    express: app,
-    watch: true
-});
+  autoescape: true,
+  express: app,
+  watch: true
+})
 
-app.use(express.urlencoded({ extended: false }));
-app.set('view engine', 'njk');
+app.use(express.urlencoded({ extended: false }))
+app.set('view engine', 'njk')
 
-const users = ['Kilson Santos', 'Diego Fernandes', 'Robson Souza'];
+const users = ['Kilson Santos', 'Robson Marques', 'Diego Fernandes']
 
 app.get('/', (req, res) => {
-    return res.render('list', { users });
-});
+  return res.render('list', { users })
+})
 
 app.get('/new', (req, res) => {
-    return res.render("new");
+  return res.render('new')
 })
 
 app.post('/create', (req, res) => {
-    users.push(req.body.user);
-    return res.redirect('/');
+  users.push(req.body.user)
+  return res.redirect('/')
 })
 
-app.listen(3000);
+app.listen(3000)
